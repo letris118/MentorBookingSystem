@@ -1,0 +1,62 @@
+﻿<Window x:Class="MentorBookingSystem.StudentMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MentorBookingSystem"
+        mc:Ignorable="d"
+        Title="StudentMainWindow" Height="800" Width="1255" WindowStartupLocation="CenterScreen" Background="AntiqueWhite">
+    <Grid>
+        <Grid Margin="183,205,190,157">
+            <!-- Define 5 Equal Height Rows -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Define 8 Equal Width Columns -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Populate the Grid Cells with TextBlocks and Borders for a Table-like appearance -->
+            <!-- Loop through each cell in code if this needs to be dynamic; here, manually add each cell -->
+
+            <!-- Row 0 -->
+            <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="LightBlue">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="LightGray">
+                <TextBlock Text="Cell 0,1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Background="LightBlue">
+                <TextBlock Text="Cell 0,2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <!-- Continue adding cells similarly for each row and column -->
+
+            <!-- Row 1 -->
+            <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="LightGray">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" ><Run Text="Slot1"/><LineBreak/><Run Text="7h - 9h15"/></TextBlock>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="LightBlue">
+                <TextBlock Text="Cell 1,1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,23,0,0" Grid.Row="2" ><Run Text="Slot1"/><LineBreak/><Run Text="7h - 9h15"/></TextBlock>
+            <!-- Continue adding cells similarly for each row and column -->
+
+            <!-- Repeat similar structure for remaining rows and columns (Rows 2, 3, 4) -->
+        </Grid>
+
+
+    </Grid>
+</Window>
