@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -31,7 +30,7 @@ public partial class MentorBookingSystemDbContext : DbContext
                     .Build();
         var strConn = config["ConnectionStrings:DefaultConnectionStringDB"];
 
-        return strConn;
+        return strConn!;
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

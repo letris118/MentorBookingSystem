@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MentorBookingSystemNew
+namespace MentorBookingSystem
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    /// Interaction logic for MentorLoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class MentorLoginWindow : Window
     {
-        public LoginWindow()
+        public MentorLoginWindow()
         {
             InitializeComponent();
         }

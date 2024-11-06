@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DAL;
+﻿
+namespace DAL.Entities;
 
 public partial class User
 {

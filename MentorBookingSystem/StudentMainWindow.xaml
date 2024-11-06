@@ -5,58 +5,107 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MentorBookingSystem"
         mc:Ignorable="d"
-        Title="StudentMainWindow" Height="800" Width="1255" WindowStartupLocation="CenterScreen" Background="AntiqueWhite">
+        Title="StudentMainWindow" Height="800" Width="1255" WindowStartupLocation="CenterScreen" Background="AntiqueWhite" ResizeMode="NoResize">
     <Grid>
-        <Grid Margin="183,205,190,157">
-            <!-- Define 5 Equal Height Rows -->
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <!-- Navigation and Header -->
+        <StackPanel x:Name="SchedulePanel" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="148,105,0,0" Height="526" Width="1024">
+            <!-- Navigation Buttons -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                <Button x:Name="BtnPrevious" Content="&#x2190; Previous" Width="150" Height="50" FontSize="16" IsEnabled="False" Click="BtnPrevious_Click"/>
+                <TextBlock Text="Weekly Schedule" FontSize="26" FontWeight="Bold" Margin="30,0" VerticalAlignment="Center"/>
+                <Button x:Name="BtnNext" Content="Next &#x2192;" Width="150" Height="50" FontSize="16" Click="BtnNext_Click"/>
+            </StackPanel>
+            <TextBlock x:Name="DateBlock" Height="33" Width="352" FontSize="20" Background="AliceBlue"/>
 
-            <!-- Define 8 Equal Width Columns -->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            <!-- Schedule Display -->
+            <Grid Margin="20">
+                <Grid.ColumnDefinitions>
+                    <!-- Define 8 columns: one for slot labels and seven for each day of the week -->
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Slot Label Column -->
+                    <ColumnDefinition Width="1*"/>
+                    <!-- Monday -->
+                    <ColumnDefinition Width="1*"/>
+                    <!-- Tuesday -->
+                    <ColumnDefinition Width="1*"/>
+                    <!-- Wednesday -->
+                    <ColumnDefinition Width="1*"/>
+                    <!-- Thursday -->
+                    <ColumnDefinition Width="1*"/>
+                    <!-- Friday -->
+                    <ColumnDefinition Width="1*"/>
+                    <!-- Saturday -->
+                    <ColumnDefinition Width="1*"/>
+                    <!-- Sunday -->
+                </Grid.ColumnDefinitions>
 
-            <!-- Populate the Grid Cells with TextBlocks and Borders for a Table-like appearance -->
-            <!-- Loop through each cell in code if this needs to be dynamic; here, manually add each cell -->
+                <Grid.RowDefinitions>
+                    <!-- Define 5 rows: one for headers, and four for time slots -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Header Row -->
+                    <RowDefinition Height="1*"/>
+                    <!-- Slot 1 -->
+                    <RowDefinition Height="1*"/>
+                    <!-- Slot 2 -->
+                    <RowDefinition Height="1*"/>
+                    <!-- Slot 3 -->
+                    <RowDefinition Height="1*"/>
+                    <!-- Slot 4 -->
+                </Grid.RowDefinitions>
 
-            <!-- Row 0 -->
-            <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="LightBlue">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" />
-            </Border>
-            <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                <TextBlock Text="Cell 0,1" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            </Border>
-            <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Background="LightBlue">
-                <TextBlock Text="Cell 0,2" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            </Border>
-            <!-- Continue adding cells similarly for each row and column -->
+                <!-- Day Headers -->
+                <TextBlock x:Name="Day1" Grid.Column="1" Grid.Row="0" Text="Monday" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                <TextBlock x:Name="Day2" Grid.Column="2" Grid.Row="0" Text="Tuesday" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                <TextBlock x:Name="Day3" Grid.Column="3" Grid.Row="0" Text="Wednesday" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                <TextBlock x:Name="Day4" Grid.Column="4" Grid.Row="0" Text="Thursday" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                <TextBlock x:Name="Day5" Grid.Column="5" Grid.Row="0" Text="Friday" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                <TextBlock x:Name="Day6" Grid.Column="6" Grid.Row="0" Text="Saturday" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                <TextBlock x:Name="Day7" Grid.Column="7" Grid.Row="0" Text="Sunday" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
 
-            <!-- Row 1 -->
-            <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" ><Run Text="Slot1"/><LineBreak/><Run Text="7h - 9h15"/></TextBlock>
-            </Border>
-            <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="LightBlue">
-                <TextBlock Text="Cell 1,1" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            </Border>
-            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,23,0,0" Grid.Row="2" ><Run Text="Slot1"/><LineBreak/><Run Text="7h - 9h15"/></TextBlock>
-            <!-- Continue adding cells similarly for each row and column -->
+                <!-- Slot Labels -->
+                <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" TextAlignment="Center" Text="Slot 1&#xD;&#xA;(07:00 - 09:15)"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" TextAlignment="Center" Text="Slot 2&#xA;(09:30 - 11:45)"/>
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Slot 3&#xA;(12:30 - 14:45)" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" TextAlignment="Center"/>
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Slot 4&#xA;(15:00 - 17:15)" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" TextAlignment="Center"/>
 
-            <!-- Repeat similar structure for remaining rows and columns (Rows 2, 3, 4) -->
-        </Grid>
+                <!-- Time Slots for Each Day -->
+                <!-- Slot 1 -->
+                <Button x:Name="Day1_1" Grid.Column="1" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day2_1" Grid.Column="2" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day3_1" Grid.Column="3" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day4_1" Grid.Column="4" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day5_1" Grid.Column="5" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day6_1" Grid.Column="6" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day7_1" Grid.Column="7" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
 
+                <!-- Slot 2 -->
+                <Button x:Name="Day1_2" Grid.Column="1" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day2_2" Grid.Column="2" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day3_2" Grid.Column="3" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day4_2" Grid.Column="4" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day5_2" Grid.Column="5" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day6_2" Grid.Column="6" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day7_2" Grid.Column="7" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
+
+                <!-- Slot 3 -->
+                <Button x:Name="Day1_3" Grid.Column="1" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day2_3" Grid.Column="2" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day3_3" Grid.Column="3" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day4_3" Grid.Column="4" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day5_3" Grid.Column="5" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day6_3" Grid.Column="6" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day7_3" Grid.Column="7" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
+
+                <!-- Slot 4 -->
+                <Button x:Name="Day1_4" Grid.Column="1" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day2_4" Grid.Column="2" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day3_4" Grid.Column="3" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day4_4" Grid.Column="4" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day5_4" Grid.Column="5" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day6_4" Grid.Column="6" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day7_4" Grid.Column="7" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
+            </Grid>
+        </StackPanel>
 
     </Grid>
 </Window>

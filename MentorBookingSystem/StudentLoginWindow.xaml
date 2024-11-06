@@ -1,11 +1,11 @@
-﻿<Window x:Class="MentorBookingSystemNew.LoginWindow"
+﻿<Window x:Class="MentorBookingSystemNew.StudentLoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MentorBookingSystemNew"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="800" Width="1255" WindowStartupLocation="CenterScreen" Background="AntiqueWhite">
+        Title="StudentLoginWindow" Height="800" Width="1255" WindowStartupLocation="CenterScreen" Background="AntiqueWhite">
     <Grid>
         <TextBlock x:Name="Mail" Text="Mail"  Foreground="Black" FontSize="30"  Margin="221,278,952,462"/>
         <TextBlock x:Name="Pass" Text="Password" Foreground="Black" FontSize="30"  Margin="214,348,877,389"/>
@@ -16,6 +16,8 @@
         <Button Margin="483,630,497,87" Content="Quit" FontSize="30" ></Button>
 
         <Button Margin="480,546,500,171" Content="Register" FontSize="30" ></Button>
+        <Button Margin="788,490,191,229" Content="Switch to mentor" FontSize="30"/>
+        <Button Margin="786,477,193,242" Content="Switch to student" FontSize="30"/>
 
     </Grid>
 </Window>
