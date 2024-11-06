@@ -8,7 +8,7 @@
         Title="StudentMainWindow" Height="800" Width="1255" WindowStartupLocation="CenterScreen" Background="AntiqueWhite" ResizeMode="NoResize">
     <Grid>
         <!-- Navigation and Header -->
-        <StackPanel x:Name="SchedulePanel" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="148,105,0,0" Height="526" Width="1024">
+        <StackPanel x:Name="SchedulePanel" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="100,74,0,0" Height="526" Width="1024">
             <!-- Navigation Buttons -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
                 <Button x:Name="BtnPrevious" Content="&#x2190; Previous" Width="150" Height="50" FontSize="16" IsEnabled="False" Click="BtnPrevious_Click"/>
