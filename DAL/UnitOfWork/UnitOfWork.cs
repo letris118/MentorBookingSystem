@@ -36,13 +36,13 @@ namespace DAL.UnitOfWork
 
         public void Save()
         {
-            _context = new();
+            
             _context.SaveChanges();
         }
 
         public async Task SaveAsync()
         {
-            _context = new();
+          
             await _context.SaveChangesAsync();
         }
     }
