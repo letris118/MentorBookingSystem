@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MentorBookingSystem"
         mc:Ignorable="d"
-        Title="WalletWindow" Height="450" Width="800">
+        Title="WalletWindow" Height="800" Width="1255" WindowStartupLocation="CenterScreen" Background="AntiqueWhite">
     <Grid>
         
     </Grid>
