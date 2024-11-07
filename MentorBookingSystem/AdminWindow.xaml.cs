@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,33 @@ namespace MentorBookingSystem
         public AdminWindow()
         {
             InitializeComponent();
+        }
+
+        private void StudentMainWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Điều hướng đến StudentMainWindow
+            var studentWindow = new StudentMainWindow();
+            studentWindow.Show();
+        }
+
+        private void MentorMainWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Điều hướng đến MentorMainWindow
+            var mentorWindow = new MentorMainWindow();
+            mentorWindow.Show();
+        }
+
+        private void SlotWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Điều hướng đến SlotWindow
+            var slotWindow = new SlotWindow();
+            slotWindow.Show();
+        }
+        private void WalletWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Điều hướng đến WalletWindow
+            var walletWindow = new WalletWindow();
+            walletWindow.Show();
         }
     }
 }

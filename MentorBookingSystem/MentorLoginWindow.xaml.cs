@@ -46,7 +46,7 @@ namespace MentorBookingSystem
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string name = MailInput.Text;
-            string password = PassInput.Text;
+            string password = PassInput.Password;
 
             User? account = _userService.GetUser(name, password);
             if (account == null)
@@ -69,7 +69,7 @@ namespace MentorBookingSystem
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             string email = MailInput.Text;
-            string password = PassInput.Text;
+            string password = PassInput.Password;
 
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
@@ -89,7 +89,7 @@ namespace MentorBookingSystem
 
                 MessageBox.Show("Đăng ký thành công, mời bạn đăng nhập.");
                 MailInput.Text = "";
-                PassInput.Text = "";
+                PassInput.Password = "";
             }
             catch (Exception ex)
             {
