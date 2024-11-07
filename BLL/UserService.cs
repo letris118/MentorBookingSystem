@@ -39,6 +39,13 @@ namespace BLL
 
             return user;
         }
+        public User? GetUser()
+        {
+            User? user = _unitOfWork.GetRepository<User>()
+               .Entities
+               .FirstOrDefault();
+            return user;
+        }
 
         public void RechargeWallet(User student, double amount)
         {

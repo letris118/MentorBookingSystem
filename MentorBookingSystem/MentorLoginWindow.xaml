@@ -86,7 +86,7 @@
                             FontSize="14"
                             FontWeight="SemiBold"
                             BorderThickness="0"
-                            Margin="0,0"/>
+                            Margin="0,0" Click="SwitchButton_Click"/>
                 </StackPanel>
 
                 <!-- Footer -->
