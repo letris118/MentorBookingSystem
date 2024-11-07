@@ -40,6 +40,14 @@ namespace BLL
             return user;
         }
 
+        public void RechargeWallet(User student, double amount)
+        {
+            student.Wallet += amount;
+            //student.Wallet = student.Wallet + amount;
+            _unitOfWork.Save();
+            
+        }
+
     }
 
 }
