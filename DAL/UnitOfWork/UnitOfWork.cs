@@ -2,15 +2,17 @@
 
 namespace DAL.UnitOfWork
 {
-    public class UnitOfWork(MentorBookingSystemDbContext context) : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private bool disposed = false;
-        private MentorBookingSystemDbContext _context = context;
+        private MentorBookingSystemDbContext _context;
 
+        public UnitOfWork(MentorBookingSystemDbContext context) 
+        {
+            _context = context;
+        }
         protected virtual void Dispose(bool disposing)
         {
-
-        
             if (!disposed)
             {
                 if (disposing)
@@ -23,14 +25,12 @@ namespace DAL.UnitOfWork
 
         public void Dispose()
         {
-    
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
         public IGenericRepository<T> GetRepository<T>() where T : class
         {
-         
             return new GenericRepository<T>(_context);
         }
 
