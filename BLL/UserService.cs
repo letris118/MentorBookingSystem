@@ -1,6 +1,8 @@
 ﻿using DAL.Entities;
 using DAL.UnitOfWork;
-using System.Net.Mail;
+using DAL.Repositories;
+using System.Data;
+using DAL;
 
 namespace BLL
 {
@@ -8,23 +10,32 @@ namespace BLL
     {
         private readonly IUnitOfWork _unitOfWork;
 
+
         public UserService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-
-
-        public User? GetUser()
-        { 
-            return _unitOfWork.GetRepository<User>().Entities.FirstOrDefault();
+        public void RegisterUser(User user)
+        {
+            _unitOfWork.GetRepository<User>().Insert(user);
+            _unitOfWork.Save();
         }
 
-        public User GetUser(string mail, string password) 
+        public bool IsUniqueMail(string mail)
+        {
+            User? user = _unitOfWork.GetRepository<User>().Entities
+                .Where(u => u.Mail == mail)
+                .FirstOrDefault();
+
+            return user is null;
+        }
+
+        public User? GetUser(string mail, string password)
         {
             User? user = _unitOfWork.GetRepository<User>()
-                .Entities
-                .Where(u => u.Mail == mail && u.Password == password)
-                .FirstOrDefault();
+               .Entities
+               .Where(u => u.Mail == mail && u.Password == password)
+               .FirstOrDefault();
 
             return user;
         }
@@ -38,4 +49,5 @@ namespace BLL
         }
 
     }
+
 }
