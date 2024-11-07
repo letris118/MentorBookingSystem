@@ -7,9 +7,9 @@ namespace DAL.GenericRepository
         private readonly MentorBookingSystemDbContext _context;
         private readonly DbSet<T> _dbSet;
 
-        public GenericRepository(MentorBookingSystemDbContext dbContext)
+        public GenericRepository(MentorBookingSystemDbContext context)
         {
-            _context = dbContext;
+            _context = context;
             _dbSet = _context.Set<T>();
         }
 
