@@ -2,7 +2,6 @@
 using DAL;
 using DAL.Entities;
 using DAL.UnitOfWork;
-using MentorBookingSystemNew;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,8 +13,9 @@ namespace MentorBookingSystem
     /// </summary>
     public partial class StudentMainWindow : Window
     {
-        private readonly UserService _userService;
-        private readonly SlotService _slotService;
+        private readonly UserService _userService = new(new UnitOfWork(new MentorBookingSystemDbContext()));
+
+        private readonly SlotService _slotService = new(new UnitOfWork(new MentorBookingSystemDbContext()));
 
         public static DateOnly Today { get; set; } = DateOnly.FromDateTime(DateTime.Today);
         public static List<Slot>? AllSlots { get; set; }
@@ -32,9 +32,6 @@ namespace MentorBookingSystem
         public StudentMainWindow()
         {
             InitializeComponent();
-
-            App.CurrentUser = _userService.GetFirstUser();
-            App.CurrentUser = _userService.GetUser();
             AllSlots = _slotService.GetAllSlots();
             dayTextBlocks = [Day1, Day2, Day3, Day4, Day5, Day6, Day7];
             Refresh();

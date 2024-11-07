@@ -26,17 +26,12 @@
 
                 <!-- Header -->
                 <StackPanel Grid.Row="0">
-                    <Label Content="Hello Students" 
+                    <Label Content="Mentor Booking" 
                            FontSize="48" 
                            FontWeight="Bold" 
                            Foreground="#1877f2"
                            HorizontalAlignment="Center"
                            Margin="0,0,0,20"/>
-                    <TextBlock Text="Sign in to continue learning" 
-                             FontSize="18" 
-                             Foreground="#65676b"
-                             HorizontalAlignment="Center"
-                             Margin="0,0,0,30"/>
                 </StackPanel>
 
                 <!-- Login Form -->
@@ -50,63 +45,57 @@
                             Padding="15,12"
                             VerticalContentAlignment="Center"
                             />
-                    <Label Content="PassWord" FontWeight="Bold"/>
-                    <TextBox x:Name="PassInput"
-                            Background="#f0f2f5"
-                            BorderThickness="0"
-                            FontSize="16"
-                            Height="50"
-                            Padding="15,12"
-                            Margin="0,10"
-                            VerticalContentAlignment="Center"
-                            Text=""/>
+                    <Label Content="Mật khẩu" FontWeight="Bold"/>
+                    <PasswordBox x:Name="PassInput"
+                             Background="#f0f2f5"
+                             BorderThickness="0"
+                             FontSize="16"
+                             Height="50"
+                             Margin="0,10"
+                             VerticalContentAlignment="Center"
+                             Padding="15,0,15,0"/>
                 </StackPanel>
 
                 <!-- Buttons -->
                 <StackPanel Grid.Row="2" Margin="0,20">
 
-                    <Button x:Name="loginbuttonStudent"
-                            Content="Login"
-                            Click="loginbuttonStudent_Click"
+                    <Button x:Name="LoginButton"
+                            Content="Đăng nhập"
+                            Click="LoginButton_Click"
                             Background="#1877f2"
                             Foreground="White"
-                            Height="50"
+                            Height="40"
                             FontSize="16"
                             FontWeight="SemiBold"
                             BorderThickness="0"
                             />
-
-                    <Border Height="1" 
-                            Background="#dadde1" 
-                            Margin="0,20"/>
-                    <Button x:Name="register"
-                            Content="Register"
-                            Click="register_Click"
+                    <Button x:Name="RegisterButton"
+                            Content="Đăng kí"
+                            Click="RegisterButton_Click"
                             Background="#42b72a"
                             Foreground="White"
-                            Height="36"
+                            Height="40"
                             FontSize="16"
                             FontWeight="SemiBold"
                             BorderThickness="0"
                             />
-
-                    <Button x:Name="switchButton"
-                            Content="Switch to Mentor"
-                            Click="Button_Click"
+                    <Button x:Name="SwitchButton"
+                            Content="Bạn là mentor?"
+                            Click="SwitchButton_Click"
                             Background="Transparent"
                             Foreground="#1877f2"
                             Height="40"
                             FontSize="14"
                             FontWeight="SemiBold"
                             BorderThickness="0"
-                            Margin="0,10"/>
+                            />
                 </StackPanel>
 
                 <!-- Footer -->
-                <Button x:Name="quitButton"
+                <Button x:Name="QuitButton"
                         Grid.Row="3"
-                        Content="Quit"
-                        Click="quitButton_Click"
+                        Content="Thoát"
+                        Click="QuitButton_Click"
                         Background="Transparent"
                         Foreground="#1877f2"
                         FontSize="14"

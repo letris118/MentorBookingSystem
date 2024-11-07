@@ -2,9 +2,6 @@
 using DAL;
 using DAL.Entities;
 using DAL.UnitOfWork;
-using MentorBookingSystem;
-using Microsoft.Data.SqlClient;
-using Microsoft.VisualBasic.Logging;
 using System.Windows;
 
 namespace MentorBookingSystem
@@ -23,13 +20,14 @@ namespace MentorBookingSystem
             _userService = new UserService(new UnitOfWork(new MentorBookingSystemDbContext()));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SwitchButton_Click(object sender, RoutedEventArgs e)
         {
             MentorLoginWindow mentorWindow = new MentorLoginWindow();
             mentorWindow.Show();
             this.Close();
         }
-        private void quitButton_Click(object sender, RoutedEventArgs e)
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
@@ -38,60 +36,59 @@ namespace MentorBookingSystem
             }
         }
 
-        private void register_Click(object sender, RoutedEventArgs e)
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             string email = MailInput.Text;
-            string password = PassInput.Text;
+            string password = PassInput.Password;
 
-            try
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
-                if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
-                {
-                    MessageBox.Show("Email and password cannot be empty");
-                    return;
-                }
-                User newUser = new()
-                {
-                    Mail = email,
-                    Password = password,
-                    Role = 3,
-                    Wallet = 0
-                };
-                _userService.RegisterUser(newUser);
-
-                MessageBox.Show("Đăng ký thành công, mời bạn đăng nhập.");
-
+                MessageBox.Show("Vui lòng nhập mail và password");
+                return;
             }
-            catch (Exception ex)
+
+            if (!_userService.IsUniqueMail(email))
             {
-                Console.WriteLine($"Registration error: {ex.ToString()}");
-                MessageBox.Show($"Registration failed: {ex.Message}");
+                MessageBox.Show("Email đã tồn tại trong hệ thống");
+                return;
             }
+
+            User newUser = new()
+            {
+                Name = "New",
+                Mail = email,
+                Password = password,
+                Role = 3,
+                Wallet = 0
+            };
+            _userService.RegisterUser(newUser);
+
+            MessageBox.Show("Đăng ký tài khoản thành công!");
         }
 
 
-        private void loginbuttonStudent_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
 
-            string name = MailInput.Text;
-            string password = PassInput.Text;
+            string mail = MailInput.Text;
+            string password = PassInput.Password;
 
-            User? account = _userService.GetUser(name, password);
-            if (account == null)
+            if (string.IsNullOrWhiteSpace(mail) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Error UserName or Password");
+                MessageBox.Show("Vui lòng nhập mail và password");
                 return;
             }
-            if (account.Role == 2)
+
+            User? account = _userService.GetUser(mail, password);
+            if (account == null || (account.Role != 1 && account.Role != 3))
             {
-                MessageBox.Show("Error. please use Mentor account or Admin account");
+                MessageBox.Show("Đăng nhập thất bại!");
                 return;
             }
             App.CurrentUser = account;
             StudentMainWindow StudentmainWindow = new StudentMainWindow();
             StudentmainWindow.Show();
             this.Close();
-
         }
     }
 }
