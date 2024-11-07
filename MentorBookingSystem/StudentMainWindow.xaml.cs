@@ -11,8 +11,8 @@ namespace MentorBookingSystem
     /// </summary>
     public partial class StudentMainWindow : Window
     {
-        private readonly UserService _userService = new(new UnitOfWork());
-        private readonly SlotService _slotService = new(new UnitOfWork());
+        private readonly UserService _userService;
+        private readonly SlotService _slotService;
 
         public static DateOnly Today { get; set; } = DateOnly.FromDateTime(DateTime.Today);
         private int schedulePage = 1;
@@ -28,7 +28,8 @@ namespace MentorBookingSystem
         public StudentMainWindow()
         {
             InitializeComponent();
-            App.CurrentUser = _userService.GetUser();
+
+            App.CurrentUser = _userService.GetFirstUser();
             DateBlock.Text = App.CurrentUser?.Mail;
             dayTextBlocks = new List<TextBlock> { Day1, Day2, Day3, Day4, Day5, Day6, Day7 };
             
