@@ -15,24 +15,35 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <!-- Row 0 for Mentor's Name -->
                 <RowDefinition Height="Auto"/>
+                <!-- Row 1 for Student's Name -->
+                <RowDefinition Height="Auto"/>
+                <!-- Row 2 for Meeting Date -->
                 <RowDefinition Height="*"/>
+                <!-- Row 3 for Close Button -->
             </Grid.RowDefinitions>
 
-            <!-- Teacher's Name -->
+            <!-- Mentor's Name -->
             <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10" Grid.ColumnSpan="3">
                 <TextBlock Text="Mentor: " FontWeight="Bold" VerticalAlignment="Center"/>
                 <TextBlock x:Name="MentorTxt" VerticalAlignment="Center"/>
             </StackPanel>
 
-            <!-- Meeting Date -->
+            <!-- Student's Name -->
             <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10" Grid.ColumnSpan="3">
+                <TextBlock Text="Student: " FontWeight="Bold" VerticalAlignment="Center"/>
+                <TextBlock x:Name="StudentTxt" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- Meeting Date -->
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,0,0,10" Grid.ColumnSpan="3">
                 <TextBlock Text="Thời gian: " FontWeight="Bold" VerticalAlignment="Center"/>
                 <TextBlock x:Name="TimeTxt" VerticalAlignment="Center"/>
             </StackPanel>
 
             <!-- Close Button -->
-            <Button Content="Close" Width="80" Height="30" HorizontalAlignment="Right" Grid.Row="2" Click="CloseButton_Click" Margin="0,0,10,4" Grid.Column="2"/>
+            <Button Content="Close" Width="80" Height="30" HorizontalAlignment="Right" Grid.Row="3" Click="CloseButton_Click" Margin="0,0,10,4" Grid.Column="2"/>
         </Grid>
     </Border>
 
