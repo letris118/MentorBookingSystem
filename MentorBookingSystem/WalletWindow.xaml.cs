@@ -1,8 +1,10 @@
 ﻿using BLL;
+using DAL;
 using DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,8 +23,8 @@ namespace MentorBookingSystem
     /// </summary>
     public partial class WalletWindow : Window
     {
-        private readonly UserService _userService = new(new UnitOfWork(new DAL.MentorBookingSystemDbContext()));
-        private readonly SlotService _slotService = new(new UnitOfWork(new DAL.MentorBookingSystemDbContext()));
+        private readonly UserService _userService = new(new UnitOfWork(new MentorBookingSystemDbContext()));
+        private readonly SlotService _slotService = new(new UnitOfWork(new MentorBookingSystemDbContext()));
         public WalletWindow()
         {
 

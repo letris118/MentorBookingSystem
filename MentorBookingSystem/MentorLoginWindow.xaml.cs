@@ -39,13 +39,29 @@ namespace MentorBookingSystem
         }
 
 
-        
-
-    
+   
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            MentorMainWindow mentorMainWindow = new();
+
+            string mail = MailInput.Text;
+            string password = PassInput.Password;
+
+            if (string.IsNullOrWhiteSpace(mail) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Vui lòng nhập mail và password");
+                return;
+            }
+
+            User? account = _userService.GetUser(mail, password);
+            if (account == null || (account.Role != 1 && account.Role != 2))
+            {
+                MessageBox.Show("Đăng nhập thất bại!");
+                return;
+            }
+            App.CurrentUser = account;
+            MentorMainWindow mentorMainWindow = new MentorMainWindow();
+            mentorMainWindow.Show();
             this.Close();
             mentorMainWindow.Show();
 
@@ -77,28 +93,27 @@ namespace MentorBookingSystem
 
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("You must fill in all fields");
+                MessageBox.Show("Vui lòng nhập mail và password");
                 return;
             }
 
-            try
+            if (!_userService.IsUniqueMail(email))
             {
-                User newUser = new()
-                {
-                    Mail = email,
-                    Password = password,
-                    Role = 2
-                };
-                _userService.RegisterUser(newUser);
+                MessageBox.Show("Email đã tồn tại trong hệ thống");
+                return;
+            }
 
-                MessageBox.Show("Đăng ký thành công, mời bạn đăng nhập.");
-                MailInput.Text = "";
-                PassInput.Password = "";
-            }
-            catch (Exception ex)
+            User newUser = new()
             {
-                MessageBox.Show($"Registration failed: {ex.Message}");
-            }
+                Name = "New",
+                Mail = email,
+                Password = password,
+                Role = 2,
+                Wallet = 0
+            };
+            _userService.RegisterUser(newUser);
+
+            MessageBox.Show("Đăng ký tài khoản thành công!");
         }
     
 
@@ -109,6 +124,13 @@ namespace MentorBookingSystem
             {
                 Application.Current.Shutdown();
             }
+        }
+
+        private void SwitchButton_Click(object sender, RoutedEventArgs e)
+        {
+            StudentLoginWindow studentWindow = new StudentLoginWindow();
+            studentWindow.Show();
+            this.Close();
         }
     }
 }
