@@ -1,20 +1,8 @@
 ﻿using BLL;
 using DAL;
 using DAL.UnitOfWork;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MentorBookingSystem
 {
@@ -42,7 +30,6 @@ namespace MentorBookingSystem
             if (result == MessageBoxResult.Yes)
             {
                 // Lấy thông tin người dùng hiện tại
-                App.CurrentUser = _userService.GetUser("letrinss118@gmail.com", "12345");
 
                 if (App.CurrentUser != null)
                 {

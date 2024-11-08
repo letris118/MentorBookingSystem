@@ -18,7 +18,7 @@
             <Button Content="500,000 VND" Width="200" Height="50" FontSize="16" Background="LightBlue" Margin="0,5" Click="RechargeButton_Click" Tag="500000"/>
         </StackPanel>
         <!-- Nút chuyển đến StudentMainWindow -->
-        <Button x:Name="GoToStudentMainWindowButton" Content="-->Weekly Schedule" Width="200" Height="50" FontSize="16" Background="LightGreen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="43,0,0,119"  Click="GoToStudentMainWindowButton_Click"/>
+        <Button x:Name="GoToStudentMainWindowButton" Content="➡️ Màn hình chính " Width="200" Height="50" FontSize="16" Background="LightGreen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="43,0,0,119"  Click="GoToStudentMainWindowButton_Click"/>
         
     </Grid>
 </Window>

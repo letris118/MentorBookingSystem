@@ -40,5 +40,19 @@ namespace BLL
             _unitOfWork.GetRepository<Slot>().Delete(slot);
             _unitOfWork.Save();
         }
+
+        public void ShiftToSuccess(DateOnly date, int duration, int mentorId, User student)
+        {
+            Slot? slot = _unitOfWork.GetRepository<Slot>().Entities
+                .Where(s => s.Date == date && s.Duration == duration && s.MentorId == mentorId)
+                .FirstOrDefault();
+
+            student!.Wallet -= 50000;
+            slot!.Status = 2;
+            slot!.StudentId = student.Id;
+            _unitOfWork.Save();
+
+
+        }
     }
 }
