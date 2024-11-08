@@ -36,6 +36,15 @@
 
                 <!-- Login Form -->
                 <StackPanel Grid.Row="1" Margin="10,20">
+                    <Label Content="Họ và tên" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="FullNameInput"
+            Background="#f0f2f5"
+            BorderThickness="0"
+            FontSize="16"
+            Height="50"
+            Padding="15,12"
+            VerticalContentAlignment="Center"
+            Margin="0,0,0,10"/>
                     <Label Content="Email" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBox x:Name="MailInput"
                             Background="#f0f2f5"
@@ -82,11 +91,11 @@
                             Content="Bạn là sinh viên?"
                             Background="Transparent"
                             Foreground="#1877f2"
-                            Height="40"
+                            Height="18"
                             FontSize="14"
                             FontWeight="SemiBold"
                             BorderThickness="0"
-                            Margin="0,0" Click="SwitchButton_Click"/>
+                            Margin="0" Click="SwitchButton_Click"/>
                 </StackPanel>
 
                 <!-- Footer -->
