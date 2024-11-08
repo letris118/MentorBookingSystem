@@ -39,10 +39,11 @@ namespace BLL
 
             return user;
         }
-        public User? GetUser()
+        public User? GetUserById(int id)
         {
             User? user = _unitOfWork.GetRepository<User>()
                .Entities
+               .Where(s => s.Id == id)
                .FirstOrDefault();
             return user;
         }
@@ -54,7 +55,6 @@ namespace BLL
             _unitOfWork.Save();
             
         }
-
 
         public User? GetTemporMentor()
         {

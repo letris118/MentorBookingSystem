@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MentorBookingSystem"
         mc:Ignorable="d"
-        Title="SlotWindow" Height="450" Width="800">
+        Title="SlotWindow" Height="300" Width="500" WindowStartupLocation="CenterScreen" Background="AntiqueWhite" ResizeMode="NoResize">
     <Grid>
-        
+
+        <DataGrid x:Name="MentorDataGrid" HorizontalAlignment="Left" Height="194" Margin="16,51,0,0" VerticalAlignment="Top" Width="346" AutoGenerateColumns="False" TabIndex="2" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mentor" Width="2*" Binding="{Binding Name}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Email" Width="1.5*" Binding="{Binding Mail}" IsReadOnly="True" />
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button x:Name="SelectBtn" Content="Xác nhận" Margin="374,65,23,146" Click="SelectBtn_Click"></Button>
+        <Button x:Name="BackBtn" Content="Quay lại" Margin="376,161,21,50" Click="BackBtn_Click" ></Button>
+
+
     </Grid>
 </Window>
