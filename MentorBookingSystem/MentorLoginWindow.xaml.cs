@@ -90,10 +90,10 @@ namespace MentorBookingSystem
         {
             string email = MailInput.Text;
             string password = PassInput.Password;
-
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            string name = FullNameInput.Text;
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password)||string.IsNullOrWhiteSpace(name) )
             {
-                MessageBox.Show("Vui lòng nhập mail và password");
+                MessageBox.Show("Vui lòng nhập đầy đủ mail, password và họ tên");
                 return;
             }
 
@@ -105,7 +105,7 @@ namespace MentorBookingSystem
 
             User newUser = new()
             {
-                Name = "New",
+                Name = name,
                 Mail = email,
                 Password = password,
                 Role = 2,
