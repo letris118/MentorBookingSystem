@@ -26,8 +26,7 @@
 
                 <!-- Header -->
                 <StackPanel Grid.Row="0">
-                    
-                    <Label Content="Student Booking" 
+                    <Label Content="Mentor Booking" 
                            FontSize="48" 
                            FontWeight="Bold" 
                            Foreground="#1877f2"

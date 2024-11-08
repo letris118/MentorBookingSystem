@@ -82,7 +82,7 @@ namespace MentorBookingSystem
             SetSchedulePanel();
         }
 
-        private void SetSchedulePanel()
+        public void SetSchedulePanel()
         {
             allSlots = _slotService.GetAllSlots();
 
@@ -233,6 +233,18 @@ namespace MentorBookingSystem
 
                 if (slot.Status == 1 && duration == slot.Duration && date == slot.Date)
                 {
+                    if (App.CurrentUser!.Wallet < 50000)
+                    {
+                        MessageBox.Show("Bạn không đủ 💎 trong tài khoản");
+                        return;
+                    }
+                    SlotWindow.SelectedDate = slot.Date;
+                    SlotWindow.SelectedDuration = duration;
+                    SlotWindow slotWindow = new SlotWindow();
+                    slotWindow.Show();
+                    this.Close();
+                    SetSchedulePanel();
+
                     return;
                 }
 
