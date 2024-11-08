@@ -5,6 +5,7 @@ using DAL.UnitOfWork;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace MentorBookingSystem
 {
@@ -17,8 +18,8 @@ namespace MentorBookingSystem
 
         private readonly SlotService _slotService = new(new UnitOfWork(new MentorBookingSystemDbContext()));
 
-        public static DateOnly Today { get; set; } = DateOnly.FromDateTime(DateTime.Today);
-        public static List<Slot>? AllSlots { get; set; }
+        private DateOnly Today = DateOnly.FromDateTime(DateTime.Today);
+        private List<Slot>? allSlots;
         private int schedulePage = 1;
         private List<TextBlock> dayTextBlocks;
         private List<Tuple<Button, DateOnly>>? day1Btns;
@@ -32,12 +33,11 @@ namespace MentorBookingSystem
         public StudentMainWindow()
         {
             InitializeComponent();
-            AllSlots = _slotService.GetAllSlots();
+            NameTxt.Text = App.CurrentUser!.Name;
+            WalletTxt.Text = ((double)(App.CurrentUser.Wallet!)).ToString("#,0.##", CultureInfo.InvariantCulture) + " 💎";
             dayTextBlocks = [Day1, Day2, Day3, Day4, Day5, Day6, Day7];
-            Refresh();
+            SetSchedulePanel();
         }
-
-        MentorBookingSystemDbContext context = new();
 
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
@@ -82,15 +82,9 @@ namespace MentorBookingSystem
             SetSchedulePanel();
         }
 
-        private void Refresh()
-        {
-            NameTxt.Text = App.CurrentUser!.Name;
-            WalletTxt.Text = ((double)(App.CurrentUser.Wallet!)).ToString("#,0.##", CultureInfo.InvariantCulture) + " 💎";
-            SetSchedulePanel();
-        }
-
         private void SetSchedulePanel()
         {
+            allSlots = _slotService.GetAllSlots();
 
             DateOnly startDate = Today.AddDays(7 * (schedulePage - 1));
 
@@ -176,16 +170,22 @@ namespace MentorBookingSystem
                     button.Content = "";
 
                     // Check each slot in StudentSlots for a match
-                    foreach (var slot in AllSlots!)
+                    foreach (var slot in allSlots!)
                     {
                         // Check if dates match and button position corresponds to the duration
                         if (buttonDate == slot.Date && dayBtns.IndexOf(buttonTuple) + 1 == slot.Duration)
                         {
                             // Set content to "X" if there's a match and break out of the loop
                             if (slot.Status == 1)
+                            {
                                 button.Content = "Available";
-                            else if (slot.StudentId == App.CurrentUser!.Id)
-                                button.Content = "✅";
+                                button.FontSize = 12;
+                            }
+                            else if (slot.Status == 2 && slot.StudentId == App.CurrentUser!.Id)
+                            {
+                                button.Content = "⚫";
+                                button.Foreground = Brushes.Blue;
+                            }
                             break;
                         }
                     }
@@ -222,18 +222,17 @@ namespace MentorBookingSystem
             };
             // Đầu tiên tìm ngày và slot của button đó]]'
             int duration = int.Parse(button.Tag.ToString()!);
-            DateOnly? date = allDayBtns
+            DateOnly date = allDayBtns
                 .SelectMany(list => list) // Flatten the list of lists into a single list of tuples
                 .Where(tuple => tuple.Item1 == button) // Find the tuple where the button matches
                 .Select(tuple => tuple.Item2) // Select the DateOnly value
                 .FirstOrDefault();
-            foreach (var slot in AllSlots!)
+            foreach (var slot in allSlots!)
             {
                 //TH 1: Học sinh click vào ngày trống và có set (ngày có trong mentorSlots)
 
                 if (slot.Status == 1 && duration == slot.Duration && date == slot.Date)
                 {
-                    Test.Text = "Giáo viên có set lịch nhưng chưa ai đặt";
                     return;
                 }
 
@@ -242,6 +241,8 @@ namespace MentorBookingSystem
                 {
                     SlotInformationDialog slotInformationDialog = new();
                     slotInformationDialog.MentorTxt.Text = slot.Mentor!.Name;
+                    slotInformationDialog.StudentTxt.Text = slot.Student!.Name;
+
 
                     slotInformationDialog.TimeTxt.Text = slot.Duration switch
                     {
@@ -252,7 +253,7 @@ namespace MentorBookingSystem
                         _ => "Unknown "
                     };
 
-                    slotInformationDialog.TimeTxt.Text += ((DateOnly)date).ToString("dd-MM-yyyy");
+                    slotInformationDialog.TimeTxt.Text += date.ToString("dd-MM-yyyy");
                     slotInformationDialog.ShowDialog();
                 }
 

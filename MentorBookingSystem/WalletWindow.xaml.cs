@@ -21,8 +21,8 @@ namespace MentorBookingSystem
     /// </summary>
     public partial class WalletWindow : Window
     {
-        private readonly UserService _userService = new(new UnitOfWork());
-        private readonly SlotService _slotService = new(new UnitOfWork());
+        private readonly UserService _userService = new(new UnitOfWork(new DAL.MentorBookingSystemDbContext()));
+        private readonly SlotService _slotService = new(new UnitOfWork(new DAL.MentorBookingSystemDbContext()));
         public WalletWindow()
         {
 
@@ -40,7 +40,7 @@ namespace MentorBookingSystem
             if (result == MessageBoxResult.Yes)
             {
                 // Lấy thông tin người dùng hiện tại
-                App.CurrentUser = _userService.GetUser();
+                App.CurrentUser = _userService.GetUser("letrinss118@gmail.com", "12345");
 
                 if (App.CurrentUser != null)
                 {

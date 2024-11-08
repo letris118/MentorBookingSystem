@@ -45,24 +45,28 @@ namespace MentorBookingSystem
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            string name = MailInput.Text;
-            string password = PassInput.Password;
-
-            User? account = _userService.GetUser(name, password);
-            if (account == null)
-            {
-                MessageBox.Show("Error UserName or Password");
-                return;
-            }
-            if (account.Role == 3)
-            {
-                MessageBox.Show("Error. please use Mentor account or Admin account");
-                return;
-            }
-            App.CurrentUser = account;
-            StudentMainWindow StudentmainWindow = new StudentMainWindow();
-            StudentmainWindow.Show();
+            MentorMainWindow mentorMainWindow = new();
             this.Close();
+            mentorMainWindow.Show();
+
+            //string name = MailInput.Text;
+            //string password = PassInput.Password;
+
+            //User? account = _userService.GetUser(name, password);
+            //if (account == null)
+            //{
+            //    MessageBox.Show("Error UserName or Password");
+            //    return;
+            //}
+            //if (account.Role == 3)
+            //{
+            //    MessageBox.Show("Error. please use Mentor account or Admin account");
+            //    return;
+            //}
+            //App.CurrentUser = account;
+            //StudentMainWindow StudentmainWindow = new StudentMainWindow();
+            //StudentmainWindow.Show();
+            //this.Close();
 
         }
 

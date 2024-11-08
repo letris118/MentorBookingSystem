@@ -48,6 +48,15 @@ namespace BLL
             
         }
 
+
+        public User? GetTemporMentor()
+        {
+            User? user = _unitOfWork.GetRepository<User>()
+                .Entities
+                .Where(u => u.Role == 2)
+                .FirstOrDefault();
+            return user;
+        }
     }
 
 }
