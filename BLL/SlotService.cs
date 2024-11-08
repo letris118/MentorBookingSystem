@@ -1,4 +1,5 @@
-﻿using DAL.UnitOfWork;
+﻿using DAL.Entities;
+using DAL.UnitOfWork;
 
 namespace BLL
 {
@@ -10,6 +11,15 @@ namespace BLL
         {
             _unitOfWork = unitOfWork;
         }
+        public IEnumerable<Slot> GetSlotsByDate(DateOnly date)
+        {
+            return _unitOfWork.GetRepository<Slot>()
+                .Entities
+                .Where(s => s.Date == date)
+                .ToList();
+        }
 
     }
-}
+        
+    }
+

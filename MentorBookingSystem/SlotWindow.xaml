@@ -6,7 +6,23 @@
         xmlns:local="clr-namespace:MentorBookingSystem"
         mc:Ignorable="d"
         Title="SlotWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- TextBlock để hiển thị ngày đã chọn -->
+        <TextBlock x:Name="DateBlock" FontSize="18" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,10" />
+
+        <!-- DataGrid để hiển thị danh sách slot -->
+        <DataGrid x:Name="SlotsDataGrid" Grid.Row="1" Margin="0,10,0,0"
+                  AutoGenerateColumns="True"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False">
+         
+        </DataGrid>
     </Grid>
 </Window>

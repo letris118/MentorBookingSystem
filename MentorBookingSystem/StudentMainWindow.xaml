@@ -70,40 +70,40 @@
 
                 <!-- Time Slots for Each Day -->
                 <!-- Slot 1 -->
-                <Button x:Name="Day1_1" Grid.Column="1" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day2_1" Grid.Column="2" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day3_1" Grid.Column="3" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day4_1" Grid.Column="4" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day5_1" Grid.Column="5" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day6_1" Grid.Column="6" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day7_1" Grid.Column="7" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day1_1" Grid.Column="1" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day2_1" Grid.Column="2" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day3_1" Grid.Column="3" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day4_1" Grid.Column="4" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day5_1" Grid.Column="5" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day6_1" Grid.Column="6" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day7_1" Grid.Column="7" Grid.Row="1" Content="Slot 1" Width="100" Height="80" Margin="5" />
 
                 <!-- Slot 2 -->
-                <Button x:Name="Day1_2" Grid.Column="1" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day2_2" Grid.Column="2" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day3_2" Grid.Column="3" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day4_2" Grid.Column="4" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day5_2" Grid.Column="5" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day6_2" Grid.Column="6" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day7_2" Grid.Column="7" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day1_2" Grid.Column="1" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day2_2" Grid.Column="2" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day3_2" Grid.Column="3" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day4_2" Grid.Column="4" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day5_2" Grid.Column="5" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day6_2" Grid.Column="6" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day7_2" Grid.Column="7" Grid.Row="2" Content="Slot 2" Width="100" Height="80" Margin="5" />
 
                 <!-- Slot 3 -->
-                <Button x:Name="Day1_3" Grid.Column="1" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day2_3" Grid.Column="2" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day3_3" Grid.Column="3" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day4_3" Grid.Column="4" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day5_3" Grid.Column="5" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day6_3" Grid.Column="6" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day7_3" Grid.Column="7" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day1_3" Grid.Column="1" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day2_3" Grid.Column="2" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day3_3" Grid.Column="3" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day4_3" Grid.Column="4" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day5_3" Grid.Column="5" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day6_3" Grid.Column="6" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5"  />
+                <Button x:Name="Day7_3" Grid.Column="7" Grid.Row="3" Content="Slot 3" Width="100" Height="80" Margin="5" />
 
                 <!-- Slot 4 -->
-                <Button x:Name="Day1_4" Grid.Column="1" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day2_4" Grid.Column="2" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day3_4" Grid.Column="3" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day4_4" Grid.Column="4" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day5_4" Grid.Column="5" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day6_4" Grid.Column="6" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
-                <Button x:Name="Day7_4" Grid.Column="7" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5"/>
+                <Button x:Name="Day1_4" Grid.Column="1" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day2_4" Grid.Column="2" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day3_4" Grid.Column="3" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day4_4" Grid.Column="4" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day5_4" Grid.Column="5" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day6_4" Grid.Column="6" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5" />
+                <Button x:Name="Day7_4" Grid.Column="7" Grid.Row="4" Content="Slot 4" Width="100" Height="80" Margin="5" />
             </Grid>
         </StackPanel>
 

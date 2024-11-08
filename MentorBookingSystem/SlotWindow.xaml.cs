@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,22 @@ namespace MentorBookingSystem
     /// </summary>
     public partial class SlotWindow : Window
     {
-        public SlotWindow()
+        private readonly SlotService _slotService;
+        public DateOnly SelectedDate { get; set; }
+
+        public SlotWindow(DateOnly selectedDate, SlotService slotService)
         {
             InitializeComponent();
+            _slotService = slotService;
+            SelectedDate = selectedDate;
+            DateBlock.Text = $"{SelectedDate:dddd, dd/MM/yyyy}";
+            LoadSlots();
+        }
+
+        private void LoadSlots()
+        {       
+            var slots = _slotService.GetSlotsByDate(SelectedDate);      
+            SlotsDataGrid.ItemsSource = slots;
         }
     }
 }

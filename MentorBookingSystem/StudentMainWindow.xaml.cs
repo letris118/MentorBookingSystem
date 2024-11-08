@@ -98,60 +98,85 @@ namespace MentorBookingSystem
             }
 
             day1Btns = new List<Tuple<Button, DateOnly>>
-            {
-                Tuple.Create(Day1_1, startDate),
-                Tuple.Create(Day1_2, startDate),
-                Tuple.Create(Day1_3, startDate),
-                Tuple.Create(Day1_4, startDate)
-            };
+    {
+        CreateDayButton(Day1_1, startDate),
+        CreateDayButton(Day1_2, startDate),
+        CreateDayButton(Day1_3, startDate),
+        CreateDayButton(Day1_4, startDate)
+    };
+
+            // Day 2
             day2Btns = new List<Tuple<Button, DateOnly>>
-            {
-                Tuple.Create(Day2_1, startDate.AddDays(1)),
-                Tuple.Create(Day2_2, startDate.AddDays(1)),
-                Tuple.Create(Day2_3, startDate.AddDays(1)),
-                Tuple.Create(Day2_4, startDate.AddDays(1))
-            };
+    {
+        CreateDayButton(Day2_1, startDate.AddDays(1)),
+        CreateDayButton(Day2_2, startDate.AddDays(1)),
+        CreateDayButton(Day2_3, startDate.AddDays(1)),
+        CreateDayButton(Day2_4, startDate.AddDays(1))
+    };
 
+            // Day 3
             day3Btns = new List<Tuple<Button, DateOnly>>
-            {
-                Tuple.Create(Day3_1, startDate.AddDays(2)),
-                Tuple.Create(Day3_2, startDate.AddDays(2)),
-                Tuple.Create(Day3_3, startDate.AddDays(2)),
-                Tuple.Create(Day3_4, startDate.AddDays(2))
-            };
+    {
+        CreateDayButton(Day3_1, startDate.AddDays(2)),
+        CreateDayButton(Day3_2, startDate.AddDays(2)),
+        CreateDayButton(Day3_3, startDate.AddDays(2)),
+        CreateDayButton(Day3_4, startDate.AddDays(2))
+    };
 
+            // Day 4
             day4Btns = new List<Tuple<Button, DateOnly>>
-            {
-                Tuple.Create(Day4_1, startDate.AddDays(3)),
-                Tuple.Create(Day4_2, startDate.AddDays(3)),
-                Tuple.Create(Day4_3, startDate.AddDays(3)),
-                Tuple.Create(Day4_4, startDate.AddDays(3))
-            };
+    {
+        CreateDayButton(Day4_1, startDate.AddDays(3)),
+        CreateDayButton(Day4_2, startDate.AddDays(3)),
+        CreateDayButton(Day4_3, startDate.AddDays(3)),
+        CreateDayButton(Day4_4, startDate.AddDays(3))
+    };
 
+            // Day 5
             day5Btns = new List<Tuple<Button, DateOnly>>
-            {
-                Tuple.Create(Day5_1, startDate.AddDays(4)),
-                Tuple.Create(Day5_2, startDate.AddDays(4)),
-                Tuple.Create(Day5_3, startDate.AddDays(4)),
-                Tuple.Create(Day5_4, startDate.AddDays(4))
-            };
+    {
+        CreateDayButton(Day5_1, startDate.AddDays(4)),
+        CreateDayButton(Day5_2, startDate.AddDays(4)),
+        CreateDayButton(Day5_3, startDate.AddDays(4)),
+        CreateDayButton(Day5_4, startDate.AddDays(4))
+    };
 
+            // Day 6
             day6Btns = new List<Tuple<Button, DateOnly>>
-            {
-                Tuple.Create(Day6_1, startDate.AddDays(5)),
-                Tuple.Create(Day6_2, startDate.AddDays(5)),
-                Tuple.Create(Day6_3, startDate.AddDays(5)),
-                Tuple.Create(Day6_4, startDate.AddDays(5))
-            };
+    {
+        CreateDayButton(Day6_1, startDate.AddDays(5)),
+        CreateDayButton(Day6_2, startDate.AddDays(5)),
+        CreateDayButton(Day6_3, startDate.AddDays(5)),
+        CreateDayButton(Day6_4, startDate.AddDays(5))
+    };
 
+            // Day 7
             day7Btns = new List<Tuple<Button, DateOnly>>
-            {
-                Tuple.Create(Day7_1, startDate.AddDays(6)),
-                Tuple.Create(Day7_2, startDate.AddDays(6)),
-                Tuple.Create(Day7_3, startDate.AddDays(6)),
-                Tuple.Create(Day7_4, startDate.AddDays(6))
-            };
-
+    {
+        CreateDayButton(Day7_1, startDate.AddDays(6)),
+        CreateDayButton(Day7_2, startDate.AddDays(6)),
+        CreateDayButton(Day7_3, startDate.AddDays(6)),
+        CreateDayButton(Day7_4, startDate.AddDays(6))
+    };
         }
+
+        private Tuple<Button, DateOnly> CreateDayButton(Button button, DateOnly date)
+        {
+            button.Tag = date;
+            button.Click += DayButton_Click;
+            return Tuple.Create(button, date);
+        }
+        private void DayButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is DateOnly selectedDate)
+            {
+                SlotService slotService = new SlotService(new UnitOfWork());
+
+                // Mở cửa sổ SlotWindow với ngày được chọn
+                SlotWindow slotWindow = new SlotWindow(selectedDate, slotService);
+                slotWindow.Show();
+            }
+        }
+
     }
 }
