@@ -42,7 +42,7 @@ namespace MentorBookingSystem
             if (result == MessageBoxResult.Yes)
             {
                 // Lấy thông tin người dùng hiện tại
-                App.CurrentUser = _userService.GetUser();
+                App.CurrentUser = _userService.GetUser("letrinss118@gmail.com", "12345");
 
                 if (App.CurrentUser != null)
                 {
